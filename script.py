@@ -11,35 +11,81 @@ import sys
 ====================================
 '''
 
+
+
 def getWords(fileName : str):
-    '''Return Words in a file in form of a list of strings
-    '''
+    
+    '''Return Words in a file in form of a list of strings.'''
+    
+    # String to store results
     result : [str] = []
-    temp = open(str(fileName)).readlines() # Return list of string containing the lines
+    temp = open(str(fileName)).readlines() # Return list of lines in string format
+    
+    # Go through each line and get words
     for lines in temp:
         words = lines.strip() # Remove whitespaces (leading and trailling)
         words = lines.split(' ') # Split words using space char as separator
+        
         # Now append each word into result
         for word in words:
             result.append(word)
-            
+    
+    # Return the result, a list of words in a file
     return result
 
 
-def nGram(numberN, listOfWords):
-    '''Given a number N return a Ngram from a given a list of words
+
+def nGram(listOfWords: list[str], numberN: int):
+    
+    '''
+    
+    Given a number N return a Ngram from a given a list of words
     
     @PARAMS:
         numberN: Integer
-            Number to be returned
+            Weight of the gram, 1-gram, 2-gram etc...
         string: str 
-            The string in which to execute NGram Algorithm
+            Words extracted from the file, to use the algorithm on
+            
+    @RETURNS:
+        nGram: dict
+            The resulting N-Gram
+            
     '''
-    #for word in list
     
+    # A dictionary seems like a smart way to save the results !
+    nGram: dict[str, int] = {}
+
+    # Loop through the main list of words
+    for index, word in enumerate(listOfWords):
+        # Check if index + N does not result in access out of range
+        if index+numberN <= len(listOfWords):
+            # Define variable to store the current "gram"
+            gram = ''
+            
+            # Loop through the first N words of the index
+            for i in range(0, numberN):
+                # Append to the gram
+                gram = gram+listOfWords[index+i]+' '
+            # If it's not a new gram, add to it's value
+            if gram in nGram:
+                # Get count value
+                value = nGram[gram]
+                # Update it
+                nGram[gram] = value+1
+            # In case it's an inedit gram, insert it
+            else:
+                nGram[gram] = 1
+    
+    # Finally return the N Gram
+    return nGram
+
+
 
 def getColors():
-    """Load colors file into memory.
+    """
+    
+    Load colors file into memory.
 
     @return:
         color : dict
@@ -49,7 +95,9 @@ def getColors():
         OKCYAN
         OKGREEN
         WARNING
+        
     """
+    
     colorArray = open("colors").readlines()
     colorDict = {}
 
@@ -61,6 +109,7 @@ def getColors():
         colorDict[colorName] = colorCode
 
     return colorDict
+
 
 
 def help():
@@ -92,6 +141,8 @@ def fileName():
     """Return string containing name of input file."""
     return sys.argv[1]
 
+
+
 '''
 ====================================
 ||                                ||
@@ -102,15 +153,39 @@ def fileName():
 
 # BEGIN
 
-# Stores lenght of arguments passed
+# Calculate lenght of Stdin
 nLen = len(sys.argv)
-# Check that lenght
+# Check if it's an acceptable length
 nParamsCheck(nLen)
+
 print("loading file... ", fileName())
 
+# Load color for aesthetic purposes
 print(getColors()["OKGREEN"])
 
-print("WORDS FOUND IN FILE: \n")
-print(getWords(fileName()))
+# Prints all words found on the file
+print('''
+======================================================
+      
+      WORDS FOUND IN FILE :
+          
+
+-     -      -      -      -      -      -      -    -      
+''')
+
+words = getWords(fileName())
+print(words)
+
+
+print('''
+==========================================
+
+        RESULTING N GRAM !!
+        
+-      -       -         -       -      -        -     -
+''')
+
+gramN = nGram(words, int(sys.argv[2]))
+print(gramN)
 
 exit()
