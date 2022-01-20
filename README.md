@@ -1,7 +1,7 @@
 # Definition:
 
 This repo is a simple practice repo created to document the development process of a interview exercise
-If you happen to stumble uppon this dar corner of the web, feel free to leave any comments/suggestions ;)
+If you happen to stumble uppon this dark corner of the web, feel free to leave any comments/suggestions ;)
 
 
 ## The exercise(s):
