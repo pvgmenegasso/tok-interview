@@ -11,8 +11,34 @@ import sys
 ====================================
 '''
 
+def getWords(fileName : str):
+    '''Return Words in a file in form of a list of strings
+    '''
+    result : [str] = []
+    temp = open(str(fileName)).readlines() # Return list of string containing the lines
+    for lines in temp:
+        words = lines.strip() # Remove whitespaces (leading and trailling)
+        words = lines.split(' ') # Split words using space char as separator
+        # Now append each word into result
+        for word in words:
+            result.append(word)
+            
+    return result
 
-def GetColors():
+
+def nGram(numberN, listOfWords):
+    '''Given a number N return a Ngram from a given a list of words
+    
+    @PARAMS:
+        numberN: Integer
+            Number to be returned
+        string: str 
+            The string in which to execute NGram Algorithm
+    '''
+    #for word in list
+    
+
+def getColors():
     """Load colors file into memory.
 
     @return:
@@ -39,7 +65,7 @@ def GetColors():
 
 def help():
     """Print help text."""
-    print(GetColors()["OKCYAN"])
+    print(getColors()["OKCYAN"])
     print("""\n
         this script generates an N-gram given a filename \n
         and a number N between 0 and number of words in file \n
@@ -50,10 +76,10 @@ def help():
         """)
 
 
-def NParamsCheck(nLen):
+def nParamsCheck(nLen):
     """Check script standard Input."""
     if nLen < 3:
-        print(GetColors()["WHAT"])
+        print(getColors()["WHAT"])
         print("missing arguments !")
         help()
         exit()
@@ -79,7 +105,12 @@ def fileName():
 # Stores lenght of arguments passed
 nLen = len(sys.argv)
 # Check that lenght
-NParamsCheck(nLen)
+nParamsCheck(nLen)
 print("loading file... ", fileName())
+
+print(getColors()["OKGREEN"])
+
+print("WORDS FOUND IN FILE: \n")
+print(getWords(fileName()))
 
 exit()
