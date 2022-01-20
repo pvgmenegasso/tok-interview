@@ -1,7 +1,7 @@
+"""This module reads a filename, a number N and returns a N-Gram."""
 import sys
 
-'''Stores lenght of arguments passed'''
-nLen = len(sys.argv)
+
 
 '''
 ====================================
@@ -11,44 +11,75 @@ nLen = len(sys.argv)
 ====================================
 '''
 
+
+def GetColors():
+    """Load colors file into memory.
+
+    @return:
+        color : dict
+
+    KEYS:
+        OKBLUE
+        OKCYAN
+        OKGREEN
+        WARNING
+    """
+    colorArray = open("colors").readlines()
+    colorDict = {}
+
+    for line in colorArray:
+        # Remember to remove spaces
+        line = line.replace(' ', '')
+        colorName = line.split("=")[0]
+        colorCode = line.split("=")[1]
+        colorDict[colorName] = colorCode
+
+    return colorDict
+
+
 def help():
-    '''
-        Prints help text
-    '''
-    print("\
-        this script generates an N-gram given a filename and a number N between 0 and number of words in file\
-        usage:\
-        script.py filename n\
-        \
-        to print this statement use help, h or -h\
-        ")
+    """Print help text."""
+    print(GetColors()["OKCYAN"])
+    print("""\n
+        this script generates an N-gram given a filename \n
+        and a number N between 0 and number of words in file \n
+        usage: \n
+            script.py filename n \n
+            \n
+            to print this statement use help, h or -h \n
+        """)
 
 
-
-def nParamsCheck(nLen):
-    '''
-        If number of arguments is lesser than 3, then we are missing something !
-        Remember that the first argument is always the name of the script itself
-    '''
+def NParamsCheck(nLen):
+    """Check script standard Input."""
     if nLen < 3:
+        print(GetColors()["WHAT"])
         print("missing arguments !")
         help()
         exit()
-    elif sys.argv[1] == ("help" or "h" or "-h"):
+    if sys.argv[1] in ("help","h","-h"):
         help()
-        
+        exit()
 
 
 def fileName():
-    print("Input file: ", sys.argv[1])
-    
+    """Return string containing name of input file."""
+    return sys.argv[1]
+
+'''
+====================================
+||                                ||
+||  MAIN CODE BEGINS HERE         ||
+||                                ||
+====================================
+'''
 
 # BEGIN
 
-print("arrived")
+# Stores lenght of arguments passed
+nLen = len(sys.argv)
+# Check that lenght
+NParamsCheck(nLen)
+print("loading file... ", fileName())
 
-nParamsCheck(nLen)
-
-
-
-
+exit()
