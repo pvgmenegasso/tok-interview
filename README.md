@@ -4,6 +4,28 @@ This repo is a simple practice repo created to document the development process 
 If you happen to stumble uppon this dark corner of the web, feel free to leave any comments/suggestions ;)
 
 
+
+# Project Structure:
+
+Project files follow the following structure:  
+  
+  
+    - corpuses/  
+       Files containing textual corpus that  
+       are going to be used for testing 
+       purposes 
+    
+        - grandeTexto.txt  
+            random text containing lots of
+            sentences
+
+        - splits/  
+           grandeTexto split in smaller chunks  
+           
+           xaa..xah.txt
+    
+    - Cosapdok    
+
 ## The exercise(s):
 
 1) Faça um programa simples e legível, em qualquer linguagem de programação, mas sem uso
