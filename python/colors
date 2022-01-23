@@ -1,0 +1,5 @@
+OKBLUE = '[94m'
+OKCYAN = '[96m'
+OKGREEN = '[92m'
+WARNING = '[93m'
+WHAT = '[92m'
