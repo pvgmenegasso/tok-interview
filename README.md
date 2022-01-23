@@ -19,14 +19,42 @@ Project files follow the following structure:
             random text containing lots of
             sentences
 
+        - texto.txt
+            text from original example
+
         - splits/  
            grandeTexto split in smaller chunks  
            
            xaa..xah.txt
     
-    - Cosapdok    
+    - python/
+        actual code
 
-## The exercise(s):
+        - objects/
+            classes. nGram functions are
+            defined here
+
+            - ngram.py
+                ngram definition
+
+        - gitflow.sh
+            automate git fetch & show branch
+
+        - benchmarker.sh
+            benchmark to compare performance
+
+        - script.py
+            wraps up ngram and puts it to use
+
+
+
+
+#
+..  
+..
+
+  
+### The exercise(s):
 
 1) Faça um programa simples e legível, em qualquer linguagem de programação, mas sem uso
 de bibliotecas "prontas" ou "externas", que
