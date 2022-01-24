@@ -1,3 +1,3 @@
 #!/bin/bash
 
-time python3 script.py grandeTexto.txt $1;
+time python3 script.py ../corpuses/grandeTexto.txt $1;
