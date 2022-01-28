@@ -12,39 +12,58 @@ Project files follow the following structure:
   
     - corpuses/  
        Files containing textual corpus that  
-       are going to be used for testing 
+       is going to be used for testing 
        purposes 
+
+       - splits/  
+           sample_text_bix.txt split in smaller chunks  
+           
+           - xaa..xah.txt
+                the chunks
     
-        - grandeTexto.txt  
+        - sample_text_big.txt  
             random text containing lots of
             sentences
 
-        - texto.txt
+        - text_exs.txt
             text from original example
 
-        - splits/  
-           grandeTexto split in smaller chunks  
-           
-           xaa..xah.txt
+        
     
-    - python/
-        actual code
+    - src/
+        main source code of project
 
-        - objects/
-            classes. nGram functions are
-            defined here
+        - python/
+            actual code in python
 
-            - ngram.py
-                ngram definition
+            - classes/
+                nGram functions are
+                defined here
 
-        - gitflow.sh
-            automate git fetch & show branch
+                - ngram.py
+                    ngram definition
 
-        - benchmarker.sh
-            benchmark to compare performance
 
-        - script.py
-            wraps up ngram and puts it to use
+            - tst/
+                unity testing
+                
+                - test_ngram.py
+                    test file
+
+        - scripts/
+            scripts to automate certain tasks
+
+            - gitflow.sh
+                automate git fetch & show branch
+
+            - benchmarker.sh
+                benchmark to compare performance
+
+        - main.py
+                wraps up ngram and puts it to use
+
+
+            
 
 
 

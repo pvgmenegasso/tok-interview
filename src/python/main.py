@@ -6,7 +6,7 @@ Usage: python3 script.py filename N
 '''
 import sys
 
-from objects.ngram import *
+from classes.ngram import *
 
 '''
 ====================================
@@ -54,7 +54,7 @@ def getColors():
         
     """
     
-    colorArray = open("colors").readlines()
+    colorArray = open("../scripts/colors").readlines()
     colorDict = {}
 
     for line in colorArray:
